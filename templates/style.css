@@ -1,0 +1,14 @@
+.name {
+    color: rgb(233, 194, 64)
+}
+
+.restaurants {
+    display:inline-block;
+    display: flex;
+    flex-direction: column
+}
+
+p {
+    color: aqua;
+    
+}
