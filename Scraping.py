@@ -1,3 +1,5 @@
+#coding: UTF-8
+import selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
@@ -37,28 +39,19 @@ def search(place_name):
 
 
 def extraction(page_source):
+    omulette_list = []
     bs = BeautifulSoup(page_source, "html.parser")
-
     div_item_list = bs.select("ul.js-rstlist-info")
-
     for item_list in div_item_list[0].select("div.list-rst__wrap"):
         img_tags = item_list.select("img.js-cassette-img")
 
         img = img_tags[0].get("data-original")
-        omulette_img.append(img)
-        item_restaurant_tags = item_list.select("a.list-rst__rst-name-target")
-        i = item_restaurant_tags[0].get("href")
-        omulette_restaurant.append(i)
 
-        name = img_tags[0].find_all('a')
+        item_name_tags = item_list.select("a.list-rst__rst-name-target")
+        url = item_name_tags[0].get("href")
 
-        restaurant_name = name.text
+        name = item_list.find('a').text
 
-        omulette_name.append(restaurant_name)
-
-    return omulette_restaurant, omulette_img, omulette_name
-
-
-omulette_restaurant = []
-omulette_name = []
-omulette_img = []
+        omulette = {"name": name, "img": img, "restaurant": url}
+        omulette_list.append(omulette)
+    return omulette_list
