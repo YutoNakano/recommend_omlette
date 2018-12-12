@@ -7,36 +7,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
+        crossorigin="anonymous">
     <title>OMUCHOICE</title>
 </head>
 
 <body>
     <div class="container">
-        <h1>OMUCHOICE</h1>
+        <h1>OMUCHOICE
+            <i class="far fa-lemon text-warning"></i>
+        </h1>
+
         <form method="post" action="/display">
             <input type="text" name="location">
             <input type="submit" value="オムライスを探す">
         </form>
         <div class="container">
-            <h2 class="text-warning">{{ s }}</h2>
-
-            <div class="restaurants">
 
 
-                <div class="items"> {% for x in restaurants %}{% set A_list_loop = loop %} {% for z in images %} {% if loop.index==A_list_loop.index
-                    %}
-                    <a href="{{ x }}">{{ x }}</a>
-                    <img src="{{ z }} " alt="">{% endif %} {% endfor %} {% endfor %}
+            {% for name in restaurants %}
+            <i class="fas fa-utensils text-warning"></i>
+            <div class="card" style="width: 18rem; margin: 1.5rem;">
 
+                <img class="card-img-top" src="{{ name.img }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ name.name }}</h5>
+                    <a href="{{ name.restaurant }}" class="btn btn-warning">詳細を見る</a>
                 </div>
             </div>
+            {% endfor %}
         </div>
-
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 </body>
