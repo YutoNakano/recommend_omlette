@@ -9,6 +9,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.0/css/all.css" integrity="sha384-aOkxzJ5uQz7WBObEZcHvV5JvRW3TUc2rNPA7pe3AwnsUohiw1Vj2Rgx2KSOkF5+h"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static',filename='../static/index.css') }}">
     <title>OMUCHOICE</title>
 </head>
 
@@ -23,10 +24,13 @@
             <input type="submit" value="オムライスを探す">
         </form>
         <div class="container">
-
-
+            <div class="row">
+                <h2 class="col-5 mt-15 text-danger">
+                    <i class="fas fa-utensils text-secondary"></i>レストラン</h2>
+                <h2 class="col-5 mt-15 text-danger">
+                    <i class="fas fa-cocdmments text-secondary"></i>口コミ</h2>
+            </div>
             {% for name in restaurants %}
-            <i class="fas fa-utensils text-warning"></i>
             <div class="card" style="width: 18rem; margin: 1.5rem;">
 
                 <img class="card-img-top" src="{{ name.img }}" alt="Card image cap">
