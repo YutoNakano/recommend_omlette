@@ -1,8 +1,7 @@
 #coding: UTF-8
 from jinja2 import Template, Environment, FileSystemLoader
 from jsonData import writeData
-from Scraping import search
-from Scraping import extraction
+from Scraping import search, extraction
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
@@ -18,7 +17,6 @@ def send_text():
     return render_template('index.html')
 
 
-@app.route("/display", methods=['POST', 'GET'])
 @app.route("/display", methods=['POST', 'GET'])
 def index():
     s = "レストラン"
