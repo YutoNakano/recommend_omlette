@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 import Scraping
 from flask import Flask, render_template, request
+from Twitter import tweet_search
 
 app = Flask(__name__)
 
@@ -23,7 +24,11 @@ def index():
     location = request.form['location']
     dic_result = writeData(Scraping.extraction(search(location)))
     print(dic_result)
-    return render_template('index.html', s=s, restaurants=dic_result)
+    restaurant_name = dic_result[0]["name"]
+    tweet = tweet_search(location, restaurant_name)
+    print(location)
+    print(restaurant_name)
+    return render_template('index.html', restaurants=dic_result, tweet_contents=tweet)
 
 
 if __name__ == '__main__':
